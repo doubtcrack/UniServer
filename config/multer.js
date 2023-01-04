@@ -3,7 +3,7 @@ const path = require("path");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, "build", "uploads"));
+    cb(null, path.join(__dirname, "../build", "uploads"));
     // if (process.env.NODE_ENV === 'production') {
     //   cb(null, path.join(__dirname, '../client/build/uploads'))
     // } else {
@@ -18,7 +18,6 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage }).array("images", 3);
-
 function multerMiddleware(req, res, next) {
   next();
 }
