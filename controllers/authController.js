@@ -2,7 +2,7 @@ const asynHandler = require("express-async-handler");
 const AuthModel = require("../models/authModel");
 const jwt = require("jsonwebtoken");
 const asyncHandler = require("express-async-handler");
-const authModel = require("../models/authModel");
+// const authModel = require("../models/authModel");
 const { OAuth2Client } = require("google-auth-library");
 
 const client = new OAuth2Client({
@@ -357,7 +357,7 @@ const googleLogin = asyncHandler(async (req, res) => {
 // access     private
 // method     get
 const currentUser = asyncHandler(async (req, res) => {
-  const { _id, fullname, email, phoneno, picture } = await authModel.findById(
+  const { _id, fullname, email, phoneno, picture } = await AuthModel.findById(
     req.user._id
   );
 

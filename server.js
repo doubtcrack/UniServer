@@ -29,15 +29,15 @@ connection();
 
 //serve static file
 if (process.env.NODE_ENV === "production") {
-  // app.use(express.static(path.join(__dirname, "client", "build")));
+  app.use(express.static(path.join(__dirname, "client", "build")));
 
-  // app.get("*", (req, res) => {
-  //   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-  // });
-  app.use(express.static(path.join(__dirname, "server_files")));
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "server_files", "index.html"));
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
+  // app.use(express.static(path.join(__dirname, "server_files")));
+  // app.get("*", (req, res) => {
+  //   res.sendFile(path.resolve(__dirname, "server_files", "index.html"));
+  // });
 } else {
   app.get("*", (req, res) => {
     res.send("UniConnect");
